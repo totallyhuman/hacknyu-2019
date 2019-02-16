@@ -72,8 +72,6 @@ def do_things(filePath):
         if len(approx) == 4:
             screenCnt = approx
             break
-        else:
-            print ("Something broke son")
         
         boundingBox = cv2.boundingRect(approx)
 
