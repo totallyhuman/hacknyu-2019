@@ -1,11 +1,12 @@
 import io
+import re
 from google.cloud import vision
+
+client = vision.ImageAnnotatorClient
+client = client.from_service_account_json("credentials.json")
 
 
 def analyze_image(path):
-    client = vision.ImageAnnotatorClient()
-    client = client.from_service_account_json("credentials.json")
-
     with io.open(path, 'rb') as image_file:
         content = image_file.read()
 
@@ -28,13 +29,17 @@ def detect_text(texts):
 
 def calculate_total(texts):
     processed_text = ""
+    regex = re.compile(r"^\d*[.]?\d*$")
     total = 0.0
 
     for text in texts:
         processed_text = text.description.replace("\n", " ").split(" ")
         if (processed_text[0][0] == "$"):
-            if (float(processed_text[0][1:]) > total):
-                total = float(processed_text[0][1:])
+            check = processed_text[0][1:]
+            check = check.replace(",", ".")
+            if regex.match(check):
+                if (float(check) > total):
+                    total = float(check)
 
     return total
 

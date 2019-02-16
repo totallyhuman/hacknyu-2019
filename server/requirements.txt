@@ -8,10 +8,14 @@ cycler==0.10.0
 dask==1.1.1
 decorator==4.3.2
 Flask==1.0.2
+<<<<<<< HEAD
 Flask-SocketIO==3.2.2
 google==2.0.1
+=======
+>>>>>>> 1ab417bc43758e6dcdcebe7bb3b070eae95ccada
 google-api-core==1.7.0
 google-auth==1.6.2
+google-cloud-language==1.1.1
 google-cloud-vision==0.35.2
 googleapis-common-protos==1.5.8
 grpcio==1.18.0
@@ -31,8 +35,11 @@ pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pyparsing==2.3.1
 python-dateutil==2.8.0
+<<<<<<< HEAD
 python-engineio==3.4.1
 python-socketio==3.1.2
+=======
+>>>>>>> 1ab417bc43758e6dcdcebe7bb3b070eae95ccada
 pytz==2018.9
 PyWavelets==1.0.1
 requests==2.21.0
@@ -40,7 +47,10 @@ rsa==4.0
 scikit-image==0.14.2
 scipy==1.2.1
 six==1.12.0
+<<<<<<< HEAD
 soupsieve==1.7.3
+=======
+>>>>>>> 1ab417bc43758e6dcdcebe7bb3b070eae95ccada
 toolz==0.9.0
 urllib3==1.24.1
 watson-developer-cloud==2.8.0
