@@ -1,16 +1,25 @@
-window.navigator.userAgent = "ReactNative";
-var io = require('socket.io-client');
 var serverURL = "http://0.0.0.0:5000";
-var socket = io.connect(serverURL);
-socket.on('connect', () => {
-    console.log("Connected");
-});
 
-export var uploadImage = (base64) => {
+import Toast from 'react-native-simple-toast';
 
-    console.log(base64);
+export var uploadImage = (uri) => {
+
+    Toast.show("Uploading and processing image. Please be patient.", Toast.LONG);
+    const file = {
+        uri: uri,
+        name: "image123.jpg",
+        type: "image/jpg"
+    };
+
+    const body = new FormData();
+    body.append('image', file);
+
+
+    fetch(serverURL + "/api/uploadimage", {
+        method: "POST",
+        body
+    }).then(function(response) {
+        console.log(response);
+    });
     
-    console.log("Uploading image on socketio instance " + socket);
-
-    socket.emit("uploadimage", base64);
-};
+}

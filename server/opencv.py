@@ -115,13 +115,17 @@ def do_things(filePath):
     warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
     # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
 
-    cv2.imwrite("trimmed_" + filePath, warped)
+    filePathArray = filePath.split("/")
+    fileName = filePathArray[len(filePathArray) - 1]
+    filePath = "/var/www/images/" + "trimmed_" + fileName
+
+    cv2.imwrite(filePath, warped)
 
     if __name__ == "__main__":
         cv2.imshow("a", warped)
         cv2.waitKey(0)
 
-    return "trimmed_" + filePath
+    return filePath
 
 
 if __name__ == "__main__":

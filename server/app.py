@@ -1,13 +1,27 @@
-import requests
-import sys
-import content_classification
-import ocr
-import opencv
+from flask import Flask, request
+
+from opencv import do_things
+
+from ocr import *
+
+import random, string, time
+
+app = Flask(__name__)
+
+@app.route("/api/uploadimage", methods=['POST'])
+def upload_image():
+    if request.method == "POST":
+        file = request.files['image']
+        newpath = "/var/www/images/" + str(int(time.time() * 1000.0 / 13.0)) + ".jpg"
+        file.save(newpath)
+
+        newpath = do_things(newpath)
+        print(newpath)
+
+        text = detect_text(analyze_image(newpath))
+        print(text)
+
+    return "Uploaded"
 
 if __name__ == "__main__":
-    img_data = requests.get(sys.argv[1]).content
-    with open('image.jpg', 'wb') as handler:
-        handler.write(img_data)
-    ocr_image = ocr.analyze_image(opencv.do_things("image.jpg"))
-    print(content_classification.classify(ocr.detect_text(ocr_image)))
-    print(ocr.calculate_total(ocr_image))
+    app.run(debug=True)

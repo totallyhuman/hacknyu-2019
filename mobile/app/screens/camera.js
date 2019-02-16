@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 
 import { RNCamera } from 'react-native-camera';
 
@@ -14,6 +14,13 @@ import firebase from 'firebase';
 import {uploadImage} from '../serverintegration';
 
 export default class Camera extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            cameraVisible: true
+        };
+    }
+
     static navigationOptions = {
         title: 'Capture Image',
         headerStyle: {
@@ -28,13 +35,14 @@ export default class Camera extends React.Component {
         if (this.camera) {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
-            uploadImage(data.base64);
+            uploadImage(data.uri);
+            this.setState({cameraVisible: false});
         }
     }
 
-    render() {
-        return (
-            <View style={camera.container}>
+    renderCamera = () => {
+        if (this.state.cameraVisible) {
+            return (
                 <RNCamera
                   ref={ref => {
                       this.camera = ref;
@@ -45,7 +53,16 @@ export default class Camera extends React.Component {
                   permissionDialogTitle={'Permission to use camera'}
                   permissionDialogMessage={'We need your permission to use your camera phone'}
                 />
+            );
+        } else {
+            return <Image/>;
+        }
+    }
 
+    render() {
+        return (
+            <View style={camera.container}>
+              {this.renderCamera()}
               <CameraButton style={{width: "100%"}} onPress={this.takePicture} backgroundColor={colors.green} text="Take Picture!" />
               
             </View>
