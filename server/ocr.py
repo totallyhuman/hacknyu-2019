@@ -33,8 +33,9 @@ def calculate_total(texts):
     for text in texts:
         processed_text = text.description.replace("\n", " ").split(" ")
         if (processed_text[0][0] == "$"):
-            if (float(processed_text[0][1:]) > total):
-                total = float(processed_text[0][1:])
+            check = processed_text[0][1:]
+            if (float(check) > total):
+                total = float(check)
 
     return total
 
