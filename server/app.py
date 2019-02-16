@@ -10,4 +10,4 @@ if __name__ == "__main__":
         handler.write(img_data)
     ocr_image = ocr.analyze_image(opencv.do_things("image.jpg"))
     print(content_classification.classify(ocr.detect_text(ocr_image)))
-    #print(ocr.calculate_total(ocr_image))
+    print(ocr.calculate_total(ocr_image))

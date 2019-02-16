@@ -1,4 +1,5 @@
 import io
+import re
 from google.cloud import vision
 
 client = vision.ImageAnnotatorClient
@@ -28,14 +29,17 @@ def detect_text(texts):
 
 def calculate_total(texts):
     processed_text = ""
+    regex = re.compile(r"^\d*[.]?\d*$")
     total = 0.0
 
     for text in texts:
         processed_text = text.description.replace("\n", " ").split(" ")
         if (processed_text[0][0] == "$"):
             check = processed_text[0][1:]
-            if (float(check) > total):
-                total = float(check)
+            check = check.replace(",", ".")
+            if regex.match(check):
+                if (float(check) > total):
+                    total = float(check)
 
     return total
 
