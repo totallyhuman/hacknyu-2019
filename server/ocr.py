@@ -20,4 +20,4 @@ def detect_text_uri(uri):
               
 if __name__ == "__main__":
     detect_text_uri(
-        "https://catgirl.pw/Dlf97s.jpg")
+        "https://catgirl.pw/H3fKSK.jpg")
