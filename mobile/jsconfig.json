@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "checkJs": true,
+    "jsx": "react",
+    "indentSize": 4,
+    "tabSize": 4,
+    "lib": [ "dom", "es2017" ]
+        
+    "include": [
+    "./src/"
+  ]
+}
