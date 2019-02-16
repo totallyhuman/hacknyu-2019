@@ -16,6 +16,5 @@ def handle(imageData):
     print(imageData)
 
 if __name__ == "__main__":
-    print("Running...")
-    socketio.run(app)
+    socketio.run(app, host="0.0.0.0")
 
