@@ -1,7 +1,7 @@
 import io
 from google.cloud import vision
 
-client = vision.ImageAnnotatorClient()
+client = vision.ImageAnnotatorClient
 client = client.from_service_account_json("credentials.json")
 
 
