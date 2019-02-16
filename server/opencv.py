@@ -66,8 +66,8 @@ def do_things(filePath):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # gray = cv2.GaussianBlur(image, (5, 5), 0)
     edged = cv2.Canny(gray, 125, 150)
-    
-    if __name__ == "main":
+
+    if __name__ == "__main__":
         cv2.imshow("ed", edged)
         cv2.waitKey(0)
 
@@ -104,7 +104,7 @@ def do_things(filePath):
         print(screenCnt)
         break
 
-    if __name__ == "main":
+    if __name__ == "__main__":
         outlined = image.copy()
         cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
         cv2.imshow("out",outlined)
@@ -116,6 +116,10 @@ def do_things(filePath):
     # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
 
     cv2.imwrite("trimmed_" + filePath, warped)
+
+    if __name__ == "__main__":
+        cv2.imshow("a", warped)
+        cv2.waitKey(0)
 
     return "trimmed_" + filePath
 
