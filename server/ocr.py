@@ -2,7 +2,7 @@ import io
 from google.cloud import vision
 
 
-def detect_text(path):
+def analyze_image(path):
     client = vision.ImageAnnotatorClient()
     client = client.from_service_account_json("credentials.json")
 
@@ -14,6 +14,10 @@ def detect_text(path):
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
+    return texts
+
+
+def detect_text(texts):
     image_text = ""
 
     for text in texts:
@@ -21,5 +25,20 @@ def detect_text(path):
 
     return image_text
 
-              
 
+def calculate_total(texts):
+    processed_text = ""
+    total = 0.0
+
+    for text in texts:
+        processed_text = text.description.replace("\n", " ").split(" ")
+        if (processed_text[0][0] == "$"):
+            if (float(processed_text[0][1:]) > total):
+                total = float(processed_text[0][1:])
+
+    return total
+
+
+if __name__ == "__main__":
+    print(detect_text(analyze_image("image.jpg")))
+    print(calculate_total(analyze_image("image.jpg")))
