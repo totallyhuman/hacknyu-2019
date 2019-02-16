@@ -49,6 +49,8 @@ def fourPointTransform(image, points):
 
     return warped
 
+def arcLength2(con):
+    return cv2.arcLength(con, True)
 
 def do_things(filePath):
 
@@ -59,21 +61,33 @@ def do_things(filePath):
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # gray = cv2.GaussianBlur(image, (5, 5), 0)
-    edged = cv2.Canny(gray, 75, 150)
+    edged = cv2.Canny(gray, 125, 150)
+
+    cv2.imshow("ed",edged)
+    cv2.waitKey(0)
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
-    cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[:5]
+    cnts = sorted(cnts, key=arcLength2, reverse=True)[:20]
+
+    if(len(cnts) < 1):
+        print("Not a single contour detected")
+    
 
     for c in cnts:
         peri = cv2.arcLength(c, True)
         approx = cv2.approxPolyDP(c, 0.02 * peri, True)
 
+
         if len(approx) == 4:
             screenCnt = approx
             break
+        if len(approx) < 4:
+            print("under min amount of vertexs, attempting to continue")
         
         boundingBox = cv2.boundingRect(approx)
+
+        
 
         approx = np.array(
             [
