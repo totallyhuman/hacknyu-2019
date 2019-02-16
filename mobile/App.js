@@ -17,6 +17,29 @@ import Home from './app/screens/home';
 import CategoriesSwiper from './app/screens/categories-swiper';
 import Camera from './app/screens/camera';
 
+global.categoriesArray = ["Entertainment",
+                          "Automotives",
+                          "",
+                          "",
+                          "Education",
+                          "Family",
+                          "Finance",
+                          "Food",
+                          "Health",
+                          "Hobbies",
+                          "Home",
+                          "",
+                          "News",
+                          "Real Estate",
+                          "Religion",
+                          "",
+                          "",
+                          "",
+                          "Sports",
+                          "Style and Fashion",
+                          "Technology and Computing",
+                          "Travel"];
+
 global.categories = [
     {
         categoryname: "Entertainment",

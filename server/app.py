@@ -23,5 +23,30 @@ def upload_image():
 
     return "Uploaded"
 
+@app.route("/api/getcategories", methods=['GET'])
+def get_categories():
+    return ["Entertainment",
+            "Automotives",
+            "Business",
+            "Careers",
+            "Education",
+            "Family",
+            "Finance",
+            "Food",
+            "Health",
+            "Hobbies",
+            "Home",
+            "Government",
+            "News",
+            "Real Estate",
+            "Religion and Spirituality",
+            "Science",
+            "Shopping",
+            "Society",
+            "Sports",
+            "Style and Fashion",
+            "Technology and Computing",
+            "Travel"]
+
 if __name__ == "__main__":
     app.run(debug=True)
