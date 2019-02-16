@@ -66,9 +66,10 @@ def do_things(filePath):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # gray = cv2.GaussianBlur(image, (5, 5), 0)
     edged = cv2.Canny(gray, 125, 150)
-
-    cv2.imshow("ed", edged)
-    cv2.waitKey(0)
+    
+    if __name__ == "main":
+        cv2.imshow("ed", edged)
+        cv2.waitKey(0)
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST,
                             cv2.CHAIN_APPROX_SIMPLE)
@@ -103,8 +104,13 @@ def do_things(filePath):
         print(screenCnt)
         break
 
-    outlined = image.copy()
-    cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
+    if __name__ == "main":
+        outlined = image.copy()
+        cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
+        cv2.imshow("out",outlined)
+        cv2.waitKey(0)
+
+
 
     warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
     # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
