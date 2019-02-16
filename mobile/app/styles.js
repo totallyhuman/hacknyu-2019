@@ -81,7 +81,53 @@ export const home = {
 
     totalMoney: {
         fontSize: 100,
-        color: "grey",
+        color: colors.lightgrey,
         paddingTop: 50
+    },
+
+    
+};
+
+export const moneyCategory = {
+    container: {
+        flexDirection: "column",
+        justifyContent: "center"
+    },
+
+    category: {
+        color: "black",
+        fontSize: 40
+    },
+
+    money: {
+        color: colors.lightgrey,
+        fontSize: 30
     }
 }
+
+export const purchasecard = {
+    container: {
+        backgroundColor: colors.grey,
+        borderRadius: 20,
+        marginBottom: 10,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+
+    product: {
+        fontSize: 30,
+        color: "white"
+    },
+
+    company: {
+        fontSize: 20,
+        color: "white"
+    },
+
+    price: {
+        fontSize: 15,
+        color: "white"
+    }
+
+};
+    
