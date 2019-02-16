@@ -14,10 +14,10 @@ export default class Button extends React.Component {
         return (
             <Ripple rippleColor={colors.lightgrey} onPress={this.props.onPress}>
                 <View style={button.container}>
-                    <Image
+                    {/* <Image
                         source={assets.images.googlelogo}
                         style={button.icon}
-                    />
+                    /> */}
                     <Text style={button.text}>{this.props.text}</Text>
                 </View>
             </Ripple>
