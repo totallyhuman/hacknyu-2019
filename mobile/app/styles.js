@@ -64,3 +64,24 @@ export const separator = {
         marginBottom: 10 
     }
 };
+
+export const home = {
+    container: {
+        height: "100%",
+        width: "100%",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "white"
+    },
+
+    totalTitle: {
+        color: "black",
+        fontSize: 25
+    },
+
+    totalMoney: {
+        fontSize: 100,
+        color: "grey",
+        paddingTop: 50
+    }
+}
