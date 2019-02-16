@@ -83,5 +83,6 @@ def do_things(filePath):
 
     return "trimmed_" + filePath
 
+
 if __name__ == "__main__":
     do_things("image.jpg")
