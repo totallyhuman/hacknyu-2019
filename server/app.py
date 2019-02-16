@@ -21,7 +21,7 @@ def upload_image():
         text = detect_text(analyze_image(newpath))
         print(text)
 
-    return "Uploaded"
+    return send_files(newpath, attachment_filename="tweaked.jpg") 
 
 @app.route("/api/getcategories", methods=['GET'])
 def get_categories():
