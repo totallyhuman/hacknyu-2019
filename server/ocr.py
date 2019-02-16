@@ -1,11 +1,11 @@
 import io
 from google.cloud import vision
 
+client = vision.ImageAnnotatorClient()
+client = client.from_service_account_json("credentials.json")
+
 
 def analyze_image(path):
-    client = vision.ImageAnnotatorClient()
-    client = client.from_service_account_json("credentials.json")
-
     with io.open(path, 'rb') as image_file:
         content = image_file.read()
 
