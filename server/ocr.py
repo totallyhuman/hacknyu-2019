@@ -38,8 +38,11 @@ def calculate_total(texts):
             check = processed_text[0][1:]
             check = check.replace(",", ".")
             if regex.match(check):
-                if (float(check) > total):
-                    total = float(check)
+                try:
+                    if (float(check) > total):
+                        total = float(check)
+                except Exception as e:
+                    print(e)
 
     return total
 

@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import datetime
+import time
 import random
 
 import logging
@@ -11,20 +11,47 @@ db = client.database
 collection = db.collection
 
 
-def addTransaction(category, total, time, file_name):
+def addTransaction(category, total, file_name):
     post = {
         "category": str(category),
         "total": float(total),
-        "time": str(time),
         "file_name": str(file_name)
     }
 
     logging.info(post)
     collection.insert_one(post)
 
+def getTransaction()
 
-def fillTestData():
 
+def fillTestData(amount):
+    categories = ["art and entertainment",
+                  "automotive and vehicles",
+                  "business and industrial",
+                  "careers",
+                  "education",
+                  "family and parenting",
+                  "finance",
+                  "food and drink",
+                  "health and fitness",
+                  "hobbies and interests",
+                  "home and garden",
+                  "law, govt and politics",
+                  "news",
+                  "real estate",
+                  "religion and spirituality",
+                  "science",
+                  "shopping",
+                  "society",
+                  "sports",
+                  "style and fashion",
+                  "technology and computing",
+                  "travel"]
+
+    for x in range(0, amount):
+        current_time = int(time.time())
+        addTransaction(random.randint(0, len(categories)), random.randint(
+            0, 100), current_time, str(current_time) + ".jpg") 
 
 
 def clearDatabase():
@@ -32,4 +59,4 @@ def clearDatabase():
 
 
 if __name__ == "__main__":
-    print(fillTestData())
+    print(fillTestData(100))

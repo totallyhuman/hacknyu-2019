@@ -12,7 +12,7 @@ app = Flask(__name__)
 def upload_image():
     if request.method == "POST":
         file = request.files['image']
-        newpath = "/var/www/images/" + str(int(time.time() * 1000.0 / 13.0)) + ".jpg"
+        newpath = "/var/www/html/images/" + str(int(time.time() * 1000.0 / 13.0)) + ".jpg"
         file.save(newpath)
 
         newpath = do_things(newpath)
