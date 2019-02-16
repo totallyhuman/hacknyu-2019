@@ -72,9 +72,28 @@ def do_things(filePath):
         if len(approx) == 4:
             screenCnt = approx
             break
+        else:
+            print ("Something broke son")
+        
+        boundingBox = cv2.boundingRect(approx)
+
+        approx = np.array(
+            [
+                [[boundingBox[0] + boundingBox[2],boundingBox[1]]], #tr
+                [[boundingBox[0], boundingBox[1]]], #tl
+                [[boundingBox[0], boundingBox[1] + boundingBox[3]]], #bl
+                [[boundingBox[0] + boundingBox[2], boundingBox[1] + boundingBox[3]]] #br
+            ],
+            dtype=int
+        )
+        screenCnt = approx
+        print(screenCnt)
+        break
 
     outlined = image.copy()
     cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
+    cv2.imshow("Outlined" , outlined)
+    cv2.waitKey(0)
 
     warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
     # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
