@@ -90,8 +90,6 @@ def do_things(filePath):
 
     outlined = image.copy()
     cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
-    cv2.imshow("Outlined" , outlined)
-    cv2.waitKey(0)
 
     warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
     # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
