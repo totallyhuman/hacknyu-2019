@@ -15,6 +15,7 @@ import {
 import Login from './app/screens/login';
 import Home from './app/screens/home';
 import CategoriesSwiper from './app/screens/categories-swiper';
+import Camera from './app/screens/camera';
 
 global.categories = [
     {
@@ -70,6 +71,9 @@ const stack = createStackNavigator({
     Categories: {
         screen: CategoriesSwiper
     },
+    Camera: {
+        screen: Camera
+    }
 });
 
 export default (container = createAppContainer(stack));

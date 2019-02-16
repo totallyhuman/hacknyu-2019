@@ -7,15 +7,19 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "es6-symbol": "^3.1.1",
     "firebase": "^5.8.3",
     "jsc-android": "236355.x.x",
     "react": "16.6.3",
     "react-native": "0.58.4",
+    "react-native-camera": "^1.11.1",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-material-ripple": "^0.8.0",
     "react-native-swiper": "^1.5.14",
-    "react-navigation": "^3.2.3"
+    "react-navigation": "^3.2.3",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",

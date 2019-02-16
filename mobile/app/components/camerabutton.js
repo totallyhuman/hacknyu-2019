@@ -9,10 +9,10 @@ import colors from '../colors';
 
 import assets from '../assets';
 
-export default class Button extends React.Component {
+export default class CameraButton extends React.Component {
     render() {
         return (
-            <Ripple rippleColor={colors.lightgrey} onPress={this.props.onPress}>
+            <Ripple rippleColor={colors.lightgrey} onPress={this.props.onPress} style={{marginTop: -100}}>
               <View style={{...button.container, backgroundColor: this.props.backgroundColor, ...this.props.style}}>
                     {/* <Image
                         source={assets.images.googlelogo}

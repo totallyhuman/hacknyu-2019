@@ -33,7 +33,6 @@ export const banner = {
 
 export const button = {
     container: {
-        backgroundColor: colors.grey,
         paddingTop: 15,
         paddingBottom: 15,
         width: 270,
@@ -45,13 +44,13 @@ export const button = {
 
     icon: {
         width: 30,
-        height: 30
+        height: 30,
+        paddingRight: 20
     },
 
     text: {
         color: "white",
         fontSize: 20,
-        paddingLeft: 20
     }
 };
 
@@ -131,3 +130,15 @@ export const purchasecard = {
 
 };
     
+export const camera = {
+    container: {
+        width: "100%",
+        height: "100%",
+        
+    },
+    
+    preview: {
+        width: "100%",
+        height: "100%"
+    }
+}

@@ -8,6 +8,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import MoneyCategory from '../components/moneycategory';
 import Button from '../components/button';
 
+
 export default class Home extends React.Component {
     static navigationOptions = {
         title: 'Totals',
@@ -19,13 +20,17 @@ export default class Home extends React.Component {
         }
     };
 
+    
+
     render() {
         return (
             <View style={home.container}>
-              <Text style={home.totalMoney}>$100</Text>
+                            <Text style={home.totalMoney}>$100</Text>
               <Text style={home.totalTitle}>Spent</Text>
               <View style={{height: 100}}/>
-              <Button text="Categories" onPress={() => this.props.navigation.navigate("Categories")}/>
+              <Button backgroundColor={colors.grey} text="Categories" onPress={() => this.props.navigation.navigate("Categories")}/>
+              <View style={{height: 40}}/>
+              <Button backgroundColor={colors.pink} text="Add Purchase" onPress={() => this.props.navigation.navigate("Camera")}/>
             </View>
         );
     }
