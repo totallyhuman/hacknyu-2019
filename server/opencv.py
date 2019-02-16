@@ -48,21 +48,19 @@ def fourPointTransform(image, points):
     M = cv2.getPerspectiveTransform(rect,dst)
     warped = cv2.warpPerspective(image, M,(maxWidth, maxHeight))
 
-    return warped;
+    return warped
 
 
-def do_things(filePath, outputPath):
+def do_things(filePath):
 
-    image = cv2.imread(filepath)
+    image = cv2.imread(filePath)
     ratio = image.shape[0]/600
     orig = image.copy()
     image = imutils.resize(image, height=600)
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(image, (5,5), 0)
+    gray = cv2.GaussianBlur(image, (5, 5), 0)
     edged = cv2.Canny(gray, 75, 200)
-
-
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
@@ -70,7 +68,7 @@ def do_things(filePath, outputPath):
 
     for c in cnts:
         peri = cv2.arcLength(c,True)
-        approx = cv2.approxPolyDP(c, 0.02*peri,True)
+        approx = cv2.approxPolyDP(c, 0.02 * peri,True)
 
         if len(approx) == 4:
             screenCnt = approx
@@ -84,6 +82,6 @@ def do_things(filePath, outputPath):
 
     #warped = (warped > T).astype("uint8") * 255
 
-    cv2.imwrite(outputPath, warped)
+    cv2.imwrite("trimmed_" + filePath, warped)
 
-  
+    return "trimmed_" + filePath

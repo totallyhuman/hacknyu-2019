@@ -1,10 +1,6 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-@app.route("/")
-def index():
-    return render_template("index.html")
+import content_classification
+import ocr
+import opencv
 
 if __name__ == "__main__":
-    app.run(debug=True, port="80")
+    print(content_classification.classify(ocr.detect_text(opencv.do_things("image.jpg"))))
