@@ -4,6 +4,7 @@ import cv2
 import imutils
 import matplotlib.pyplot as plt
 from skimage.filters import threshold_local
+from PIL import Image
 
 #Find which point is which in the rectangle, top bottom, right left
 def pointOrder(pts):
@@ -58,9 +59,19 @@ def do_things(filePath):
     orig = image.copy()
     image = imutils.resize(image, height=600)
 
+    
+
+    cv2.imshow("A", image)   
+    cv2.waitKey()
+
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(image, (5, 5), 0)
-    edged = cv2.Canny(gray, 75, 200)
+    edged = cv2.Canny(gray, 75, 150)
+
+
+    cv2.imshow("A", edged)   
+    cv2.waitKey()
+
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
@@ -75,13 +86,28 @@ def do_things(filePath):
             break
 
 
+    outlined = image.copy()
+    cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
+
+
+    cv2.imshow("A", outlined)   
+    cv2.waitKey()
+
+
 
     warped = fourPointTransform(orig, screenCnt.reshape(4,2) * ratio)
 
     warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
+
+
+    cv2.imshow("A", warped)   
+    cv2.waitKey()
+
 
     #warped = (warped > T).astype("uint8") * 255
 
     cv2.imwrite("trimmed_" + filePath, warped)
 
     return "trimmed_" + filePath
+
+do_things("image.jpg")
