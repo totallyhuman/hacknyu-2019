@@ -15,8 +15,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    databa
-    return render_template("index.html", total_spent = )
+    total_spent = database.getTotalSpent("user@provider.com")
+    return render_template("index.html", total_spent=total_spent)
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
