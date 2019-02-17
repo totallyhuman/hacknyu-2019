@@ -10,7 +10,7 @@ def classify(text):
         url="https://gateway-wdc.watsonplatform.net/natural-language-understanding/api"
     )
 
-    return natural_language_understanding.analyze(text=text, features=Features(categories=CategoriesOptions(limit=3))).get_result()
+    return natural_language_understanding.analyze(text=text, features=Features(categories=CategoriesOptions(limit=1))).get_result()
 
 
 if __name__ == "__main__":

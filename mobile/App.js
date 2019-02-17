@@ -71,7 +71,7 @@ fetch(global.url + "/api/transactions", {
     }
 
     console.log(global.catData);
-}).catch(error => console.error(error));;
+}).catch(error => console.error(error));
 
 const stack = createStackNavigator({
     Home: {
