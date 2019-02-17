@@ -15,7 +15,7 @@ export default class Home extends React.Component {
         super();
 
         this.state = {
-            spent: 0
+            spent: "0"
         };
 
     }
@@ -31,7 +31,24 @@ export default class Home extends React.Component {
     };
 
     componentDidMount() {
-        fetch('GET', 'http://localhost:5000/api/totalspend/').then((response) => this.setState({spent: response}));
+
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                this.setState({spent: request.responseText});
+            } else {
+                console.warn('error');
+            }
+        };
+
+        request.open("GET", "http://0.0.0.0:5000/api/totalspend");
+        request.send();
+
     }
 
     

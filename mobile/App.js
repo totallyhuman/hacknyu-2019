@@ -64,7 +64,7 @@ fetch(global.url + "/api/transactions", {
             if (!(category in dataCategories)) {
                 dataCategories[category] = {spent: 0, transactions: []};
             }
-            dataCategories[category].transactions += transaction;
+            dataCategories[category].transactions.push(transaction);
             dataCategories[category].spent += transaction.price;
             global.catData.spent += transaction.price;
         }
