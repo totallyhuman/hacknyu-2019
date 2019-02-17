@@ -84,6 +84,10 @@ def upload_image():
         database.addTransaction(categories.index(json.dumps(classify(
             detect_text(texts))).categories[0].label.split("/")[1]), calculate_total(texts), newpath, "user@provider.com")
 
+        print(texts)
+        print(categories.index(json.dumps(classify(
+            detect_text(texts))).categories[0].label.split("/")[1]))
+
     return 200
 
     # return send_files(newpath, attachment_filename="tweaked.jpg")
