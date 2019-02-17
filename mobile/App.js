@@ -36,8 +36,8 @@ global.categoriesArray = ["Entertainment",
                           "",
                           "",
                           "Sports",
-                          "Style and Fashion",
-                          "Technology and Computing",
+                          "Fashion",
+                          "Technology",
                           "Travel"];
 
 global.url = "http://0.0.0.0:5000";
