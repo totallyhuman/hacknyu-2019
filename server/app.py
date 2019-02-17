@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-
+import json
 from bson.json_util import dumps
 
 from opencv import do_things
@@ -82,7 +82,7 @@ def upload_image():
         texts = analyze_image(newpath)
 
         database.addTransaction(categories.index(json.dumps(classify(
-            detect_text(texts))).categories[0].label.split("/")[1]), calculate_total(texts), newpath, "user@provider.com")
+            detect_text(texts)))["categories"][0].label.split("/")[1]), calculate_total(texts), newpath, "user@provider.com")
 
         print(texts)
         print(categories.index(json.dumps(classify(
