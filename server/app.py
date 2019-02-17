@@ -85,9 +85,21 @@ def upload_image():
         texts = analyze_image(newpath)
         text = detect_text(texts)
 
+
+        if text == None:
+            text = "Food Food food foods and more food"
+
         classified = categories.index(classify(text)['categories'][0]['label'].split('/')[1])
 
         total = calculate_total(texts)
+
+
+        if(classified == None):
+            classiied = 0
+
+        
+        if(total == None):
+            total = 0
 
         database.addTransaction(classified, total, newpath, "user@provider.com")
 
