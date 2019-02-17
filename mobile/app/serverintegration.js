@@ -1,4 +1,4 @@
-var serverURL = global.url;
+var serverURL = "http://localhost:5000";
 
 import Toast from 'react-native-simple-toast';
 
@@ -18,10 +18,5 @@ export var uploadImage = (uri) => {
     fetch(serverURL + "/api/uploadimage", {
         method: "POST",
         body
-    }).then(function(response) {
-        return response.blob();
-    }).then(function(blob) {
-
-    });
-    
+    });  
 }
