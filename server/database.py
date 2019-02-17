@@ -43,7 +43,7 @@ def getCategoriesSpent(email, category):
         if (post["category"] == category):
             spent += post["price"]
   
-    return spent
+    return str("{:.2f}".format(spent))
 
 
 def sortKey(so):
