@@ -5,6 +5,7 @@ from bson.json_util import dumps
 from opencv import do_things
 
 from ocr import *
+from content_classification import *
 
 from database import *
 
@@ -59,6 +60,8 @@ def upload_image():
 
         text = detect_text(analyze_image(newpath))
         print(text)
+
+        database.addTransaction(classify(text), calculate_total(text), newpath, "user@provider.com")
 
     return "Uploaded"
 
