@@ -6,7 +6,6 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-# mongoURL = "mongodb://34.73.115.63:27017/"
 mongoURL = "mongodb://localhost:27017"
 
 db = MongoClient(mongoURL)['hacknyu']
@@ -25,8 +24,19 @@ def addTransaction(category, price, filename, email):
     logging.info(post)
     transactions.insert_one(post)
 
+
 def getTransactions(email):
     return transactions.find({"email": email})
+
+
+def getTotalSpent(email):
+    total_spent = 0.0
+    
+    for post in getTransactions(email):
+        total_spent += post["price"]
+
+    return total_spent
+
 
 def fillTestData(amount):
     categories = ["art and entertainment",
@@ -57,10 +67,10 @@ def fillTestData(amount):
         addTransaction(random.randint(0, len(categories)), random.randint(
             0, 100), str(current_time) + ".jpg", "user@provider.com") 
 
-
 def clearDatabase():
     db.collection.delete_many({})
 
 
 if __name__ == "__main__":
+    clearDatabase()
     print(fillTestData(100))
