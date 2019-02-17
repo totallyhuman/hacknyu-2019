@@ -83,12 +83,13 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        classified = classify(detect_text(texts))
+        classified = categories.index(classify(text)['categories'][0]['label'].split('/')[1])
+
         total = calculate_total(texts)
 
         database.addTransaction(classified, total, newpath, "user@provider.com")
 
-        return json.dumps({category: })
+        return newpath
 
     # return send_files(newpath, attachment_filename="tweaked.jpg")
 
