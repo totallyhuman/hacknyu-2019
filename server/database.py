@@ -72,7 +72,8 @@ def fillTestData(amount):
             0, 100), str(current_time) + ".jpg", "user@provider.com") 
 
 def clearDatabase():
-    db.collection.delete_many({})
+    users.delete_many({})
+    transactions.delete_many({})
 
 if __name__ == "__main__":
     clearDatabase()
