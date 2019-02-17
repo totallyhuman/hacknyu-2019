@@ -6,8 +6,7 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-mongoURL = "mongodb://34.73.115.63:27017/"
-# mongoURL = "mongodb://localhost:27017"
+mongoURL = "mongodb://localhost:27017"
 
 db = MongoClient(mongoURL)['hacknyu']
 users = db.users
