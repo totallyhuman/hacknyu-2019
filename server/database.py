@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-db = MongoClient("localhost", 27017)['hacknyu']
+db = MongoClient("budgetbucket.net", 27017)['hacknyu']
 users = db.users
 transactions = db.transactions
 
@@ -34,6 +34,7 @@ def getTotalSpent(email):
         total_spent += post["price"]
 
     return total_spent
+
 
 def getCategoriesSpent(email, category):
     spent = 0.0
@@ -84,7 +85,7 @@ def fillTestData(amount):
                   "travel"]
 
     for x in range(0, amount):
-        current_time = int(time.time())
+        current_time = int(time.time() * (x + 1))
         addTransaction(random.randint(0, len(categories)), random.randint(
             0, 100), str(current_time) + ".jpg", "user@provider.com") 
 
