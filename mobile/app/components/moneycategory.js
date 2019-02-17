@@ -9,13 +9,13 @@ export default class MoneyCategory extends React.Component {
         console.log(global.catData);
         return (
             <View style={moneyCategory.container}>
-              <Text style={moneyCategory.category}>{this.props.data.category}</Text>
+              <Text style={moneyCategory.category}>{this.props.category}</Text>
                 <Text style={moneyCategory.money}>${this.props.data.spent} Spent</Text>
-              <ScrollView>
-                {this.props.data.purchases.map(function(purchase) {
+              {/*<ScrollView>
+                {this.props.data.transactions.map(function(purchase) {
                     return <PurchaseCard purchase={purchase}  />;
                 })}
-              </ScrollView>
+                </ScrollView>*/}
             </View>
         );
     }
