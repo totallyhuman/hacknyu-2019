@@ -91,8 +91,6 @@ def upload_image():
 
         return newpath
 
-    # return send_files(newpath, attachment_filename="tweaked.jpg")
-
 @app.route('/api/transactions', methods=['GET'])
 def get_transactions():
     return dumps(getTransactions("user@provider.com"))
