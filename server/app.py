@@ -81,7 +81,7 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        database.addTransaction(categories.index(json.dumps(classify(
+        database.addTransaction(categories.index(json.loads(classify(
             detect_text(texts)))["categories"][0].label.split("/")[1]), calculate_total(texts), newpath, "user@provider.com")
 
         print(texts)
