@@ -50,6 +50,30 @@ def get_total_spend():
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
+
+  categories = ["art and entertainment",
+                "automotive and vehicles",
+                "business and industrial",
+                "careers",
+                "education",
+                "family and parenting",
+                "finance",
+                "food and drink",
+                "health and fitness",
+                "hobbies and interests",
+                "home and garden",
+                "law, govt and politics",
+                "news",
+                "real estate",
+                "religion and spirituality",
+                "science",
+                "shopping",
+                "society",
+                "sports",
+                "style and fashion",
+                "technology and computing",
+                "travel"]
+
     if request.method == "POST":
         file = request.files['image']
         newpath = "/var/www/html/images/" + str(int(time.time() * 1000.0 / 13.0)) + ".jpg"
@@ -58,7 +82,7 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
+        database.addTransaction(categories.index(classify(detect_text(texts))), calculate_total(texts), newpath, "user@provider.com")
 
     return 200
 
