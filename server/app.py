@@ -20,7 +20,8 @@ def index():
 
 @app.route("/api/totalspend")
 def get_total_spend():
-    return database.getTotalSpent("user@provider.com")
+    print("Some goon wanted to know how much they spent")
+    return str(database.getTotalSpent("user@provider.com"))
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():

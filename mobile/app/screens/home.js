@@ -10,6 +10,16 @@ import Button from '../components/button';
 
 
 export default class Home extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            spent: 0
+        };
+
+    }
+
     static navigationOptions = {
         title: 'Totals',
         headerStyle: {
@@ -20,12 +30,16 @@ export default class Home extends React.Component {
         }
     };
 
+    componentDidMount() {
+        fetch('GET', 'http://localhost:5000/api/totalspend/').then((response) => this.setState({spent: response}));
+    }
+
     
 
     render() {
         return (
             <View style={home.container}>
-              <Text style={home.totalMoney}>${global.catData.spent}</Text>
+              <Text style={home.totalMoney}>{this.state.spent}</Text>
               <Text style={home.totalTitle}>Spent</Text>
               <View style={{height: 100}}/>
               <Button backgroundColor={colors.grey} text="Categories" onPress={() => this.props.navigation.navigate("Categories")}/>

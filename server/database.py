@@ -6,7 +6,8 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-db = MongoClient("mongodb://budgetbucket.net:27017/")['hacknyu']
+# db = MongoClient("mongodb://budgetbucket.net:27017/")['hacknyu']
+db = MongoClient("mongodb://localhost:27017/")['hacknyu']
 users = db.users
 transactions = db.transactions
 

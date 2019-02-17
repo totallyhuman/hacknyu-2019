@@ -1,4 +1,4 @@
-var serverURL = "http://localhost:5000";
+var serverURL = "http://0.0.0.0:5000";
 
 import Toast from 'react-native-simple-toast';
 
