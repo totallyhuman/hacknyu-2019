@@ -36,11 +36,11 @@ global.categoriesArray = ["Entertainment",
                           "",
                           "",
                           "Sports",
-                          "Style and Fashion",
-                          "Technology and Computing",
+                          "Fashion",
+                          "Technology",
                           "Travel"];
 
-global.url = "http://0.0.0.0:5000";
+global.url = "https://budgetbucket.net";
 
 global.catData = {
     spent: 0,
@@ -64,14 +64,14 @@ fetch(global.url + "/api/transactions", {
             if (!(category in dataCategories)) {
                 dataCategories[category] = {spent: 0, transactions: []};
             }
-            dataCategories[category].transactions += transaction;
+            dataCategories[category].transactions.push(transaction);
             dataCategories[category].spent += transaction.price;
             global.catData.spent += transaction.price;
         }
     }
 
     console.log(global.catData);
-});
+}).catch(error => console.error(error));;
 
 const stack = createStackNavigator({
     Home: {

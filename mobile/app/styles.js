@@ -90,11 +90,13 @@ export const home = {
 export const moneyCategory = {
     container: {
         flexDirection: "column",
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: colors.grey
     },
 
     category: {
-        color: "black",
+        color: "white",
         fontSize: 40
     },
 
@@ -102,30 +104,27 @@ export const moneyCategory = {
         color: colors.lightgrey,
         fontSize: 30
     }
-}
+};
 
 export const purchasecard = {
     container: {
         backgroundColor: colors.grey,
-        borderRadius: 20,
         marginBottom: 10,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        width: 350,
+        height: 300,
+        backgroundColor: "white"
     },
 
-    product: {
-        fontSize: 30,
-        color: "white"
-    },
-
-    company: {
+    date: {
         fontSize: 20,
-        color: "white"
+        color: colors.green
     },
-
+    
     price: {
-        fontSize: 15,
-        color: "white"
+        fontSize: 50,
+        color: colors.green
     }
 
 };

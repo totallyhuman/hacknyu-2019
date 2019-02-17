@@ -38,6 +38,7 @@ export default class Camera extends React.Component {
             uploadImage(data.uri);
             console.log(data.uri);
             this.setState({cameraVisible: false});
+            this.props.navigation.navigate("Home");
         }
     }
 

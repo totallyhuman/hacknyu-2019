@@ -1,4 +1,4 @@
-var serverURL = "http://localhost:5000";
+var serverURL = "https://budgetbucket.net";
 
 import Toast from 'react-native-simple-toast';
 
@@ -7,7 +7,7 @@ export var uploadImage = (uri) => {
     Toast.show("Uploading and processing image. Please be patient.", Toast.LONG);
     const file = {
         uri: uri,
-        name: "image123.jpg",
+        name: "image.jpg",
         type: "image/jpg"
     };
 
@@ -18,5 +18,5 @@ export var uploadImage = (uri) => {
     fetch(serverURL + "/api/uploadimage", {
         method: "POST",
         body
-    });  
+    }).catch(error => console.error(error));
 }
