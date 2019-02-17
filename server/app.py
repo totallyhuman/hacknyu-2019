@@ -84,7 +84,7 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        classified = categories.index(classify(text)['categories'][0]['label'].split('/')[1])
+        classified = categories.index(classify(texts)['categories'][0]['label'].split('/')[1])
 
         total = calculate_total(texts)
 
