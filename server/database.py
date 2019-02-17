@@ -6,14 +6,14 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-db = MongoClient("budgetbucket.net", 27017)['hacknyu']
+db = MongoClient("0.0.0.0", 27017)['hacknyu']
 users = db.users
 transactions = db.transactions
 
 
 def addTransaction(category, price, filename, email):
     post = {
-        "category": str(category),
+        "category": int(category),
         "price": float(price),
         "filename": str(filename),
         "email": str(email)

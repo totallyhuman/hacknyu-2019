@@ -51,6 +51,8 @@ def get_total_spend():
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
+    print("Receiving new image")
+
     categories = ["art and entertainment",
                 "automotive and vehicles",
                 "business and industrial",
@@ -82,9 +84,12 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
+        classified = classify(detect_text(texts))
+        total = calculate_total(texts)
 
-        return 200
+        database.addTransaction(classified, total, newpath, "user@provider.com")
+
+        return json.dumps({category: })
 
     # return send_files(newpath, attachment_filename="tweaked.jpg")
 

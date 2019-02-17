@@ -2,9 +2,10 @@ var serverURL = "http://0.0.0.0:5000";
 
 import Toast from 'react-native-simple-toast';
 
-export var uploadImage = (uri) => {
+export var uploadImage = async (uri, navigation) => {
 
-    Toast.show("Uploading and processing image. Please be patient.", Toast.LONG);
+    Toast.show("Uploading and processing image. Please be patient.");
+
     const file = {
         uri: uri,
         name: "image123.jpg",
@@ -15,8 +16,10 @@ export var uploadImage = (uri) => {
     body.append('image', file);
 
 
-    fetch(serverURL + "/api/uploadimage", {
+    return fetch(serverURL + "/api/uploadimage", {
         method: "POST",
         body
-    });  
+    })
+        .then((response) => response.json())
+        .then((json) => navigation.navigate("Home"));
 }
