@@ -83,8 +83,6 @@ def upload_image():
 
         database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
 
-        return 200
-
     # return send_files(newpath, attachment_filename="tweaked.jpg")
 
 @app.route('/api/transactions', methods=['GET'])
