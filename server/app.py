@@ -12,6 +12,8 @@ from database import *
 import random, string, time
 import database
 
+from google.protobuf.json_format import MessageToJson
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -84,7 +86,8 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        classified = categories.index(json.loads(classify(texts))['categories'][0]['label'].split('/')[1])
+        classified = categories.index(MessageToJson(classify(texts))[
+                                      'categories'][0]['label'].split('/')[1])
 
         total = calculate_total(texts)
 
