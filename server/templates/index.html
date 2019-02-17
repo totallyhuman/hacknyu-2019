@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>BudgetBucket</title>
-    </head>
 
-    <body>
-        Welcome to the landing page ig
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Features-Boxed.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header-Blue.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}">
+<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename = 'img/favicon.png') }}"/>
+</head>
+
+<body style="background-color:#39393b;">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#fafafa;box-shadow:0px 0px 15px rgba(33, 33, 33, 0.4);">
+        <div class="container"><a class="navbar-brand" href="#" style="color:#39393b;"><img src="{{ url_for('static', filename = 'img/monochrome-logo.png') }}" style="width:25px;height:25px;margin-right:15px;margin-top:-10px;">Dashboard</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1"></div>
+        </div>
+    </nav>
+    <div class="features-boxed" style="background-color:rgba(238,244,247,0);">
+        <div class="container">
+            <div class="intro"></div>
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box">
+                        <h1 class="BIGDATA" style="/*font-size:58px;*/margin-top:85px;">{{money_spent}}</h1>
+                        <h3 class="name">Money Spent</h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-clock-o icon"></i>
+                        <h3 class="name">Category 1</h3>
+                        <p class="description">latin for "i'm not really gay but iwould not hesitate for one second to mate with our lord and saviour"</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-list-alt icon"></i>
+                        <h3 class="name">Category 2</h3>
+                        <p class="description"><br>latin for "i'm not really gay but iwould not hesitate for one second to mate with our lord and saviour"<br><br></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-leaf icon"></i>
+                        <h3 class="name">Category 3</h3>
+                        <p class="description">latin for "i'm not really gay but iwould not hesitate for one second to mate with our lord and saviour"<br></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-leaf icon"></i>
+                        <h3 class="name">Category 4</h3>
+                        <p class="description">latin for "i'm not really gay but iwould not hesitate for one second to mate with our lord and saviour"<br></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-plane icon"></i>
+                        <h3 class="name">Category 5</h3>
+                        <p class="description">latin for "i'm not really gay but iwould not hesitate for one second to mate with our lord and saviour"<br></p>
+                    </div>
+                </div>
+                <div class="col" style="height:22.5rem;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

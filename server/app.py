@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 from bson.json_util import dumps
 
@@ -9,8 +9,14 @@ from ocr import *
 from database import *
 
 import random, string, time
+import database
 
 app = Flask(__name__)
+
+@app.route("/")
+def index():
+    databa
+    return render_template("index.html", total_spent = )
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
