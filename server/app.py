@@ -87,7 +87,7 @@ def upload_image():
 
         classified = categories.index(classify(text)['categories'][0]['label'].split('/')[1])
 
-        total = calculate_total(text)
+        total = calculate_total(texts)
 
         database.addTransaction(classified, total, newpath, "user@provider.com")
 
