@@ -6,9 +6,7 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-mongoURL = "mongodb://localhost:27017"
-
-db = MongoClient(mongoURL)['hacknyu']
+db = MongoClient("mongodb://budgetbucket.net:27017/")['hacknyu']
 users = db.users
 transactions = db.transactions
 
@@ -37,6 +35,12 @@ def getTotalSpent(email):
 
     return total_spent
 
+def getCategorySpent(email, category):
+    category_spent = 0.0
+
+    for post in getTransactions(email):
+        if (post["category"] == category):
+            category_spent += post["price"]
 
 def fillTestData(amount):
     categories = ["art and entertainment",
@@ -69,7 +73,6 @@ def fillTestData(amount):
 
 def clearDatabase():
     db.collection.delete_many({})
-
 
 if __name__ == "__main__":
     clearDatabase()
