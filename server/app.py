@@ -106,7 +106,7 @@ def upload_image():
 
         database.addTransaction(classified, total, newpath, "user@provider.com")
 
-        return "https://i.budgetbucket.com/images/trimmed_" + time_submitted + ".jpg"
+        return "https://i.budgetbucket.net/images/trimmed_" + time_submitted + ".jpg"
 
 @app.route('/api/transactions', methods=['GET'])
 def get_transactions():
