@@ -5,12 +5,14 @@ from opencv import do_things
 from ocr import *
 
 import random, string, time
+import database
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    databa
+    return render_template("index.html", total_spent = )
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
