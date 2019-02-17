@@ -58,7 +58,15 @@ def arcLength2(con):
 
 def do_things(filePath):
 
+
     image = cv2.imread(filePath)
+
+    filePathArray = filePath.split("/")
+    fileName = filePathArray[len(filePathArray) - 1]
+    filePath = "/var/www/html/images/" + "trimmed_" + fileName
+
+
+    
     ratio = image.shape[0] / 600
     orig = image.copy()
     image = imutils.resize(image, height=600)
@@ -111,18 +119,18 @@ def do_things(filePath):
         cv2.waitKey(0)
 
 
+    
 
-    warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
-    # warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
-
-    filePathArray = filePath.split("/")
-    fileName = filePathArray[len(filePathArray) - 1]
-    filePath = "/var/www/html/images/" + "trimmed_" + fileName
+    try:
+        warped = fourPointTransform(orig, screenCnt.reshape(4, 2) * ratio)
+    except Exception as e:
+        print("Critical error detected, no contour found, reverting back to input as output")
+        cv2.imwrite(filePath, orig)
 
     cv2.imwrite(filePath, warped)
 
     if __name__ == "__main__":
-        cv2.imshow("a", warped)
+        cv2.imshow("a", imutils.resize(warped, height = 600))
         cv2.waitKey(0)
 
     return filePath
