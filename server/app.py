@@ -75,7 +75,8 @@ def upload_image():
 
     if request.method == "POST":
         file = request.files['image']
-        newpath = "/var/www/html/images/" + str(int(time.time() * 1000.0 / 13.0)) + ".jpg"
+        time_submitted = str(int(time.time() * 1000.0 / 13.0))
+        newpath = "/var/www/html/images/" + time_submitted + ".jpg"
         file.save(newpath)
 
         newpath = do_things(newpath)
@@ -83,7 +84,7 @@ def upload_image():
 
         database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
 
-    # return send_files(newpath, attachment_filename="tweaked.jpg")
+        return "https://i.budgetbucket.com/images/trimmed_" + time_submitted + ".jpg"
 
 @app.route('/api/transactions', methods=['GET'])
 def get_transactions():
