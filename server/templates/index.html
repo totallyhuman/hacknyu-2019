@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bu</title>
+    <title>Dashboard &mdash; Budget Bucket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
@@ -27,7 +27,7 @@
             <div class="row justify-content-center features">
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box">
-                        <h1 class="BIGDATA" style="/*font-size:58px;*/margin-top:85px;">${{total_spent}}</h1>
+                        <h1 class="BIGDATA" style="/*font-size:58px;*/margin-top:85px;">${{'{:.2f}'.format(total_spent)}}</h1>
                         <h3 class="name">Money Spent</h3>
                     </div>
                 </div>
