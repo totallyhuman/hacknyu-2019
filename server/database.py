@@ -95,4 +95,4 @@ def clearDatabase():
 
 if __name__ == "__main__":
     clearDatabase()
-    print(fillTestData(100))
+

@@ -34,7 +34,7 @@ def index():
              ["Real Estate", "<i class='fas fa-warehouse icon'></i>"],
              ["Religion and Spirituality", "<i class='fas fa-church icon'></i>"],
              ["Science", "<i class='fas fa-flask icon'></i>"],
-             ["Shopping", "<i class='fas fa-shopping-cart icon'></i>"],
+             ["Food", "<i class='fas fa-shopping-cart icon'></i>"],
              ["Society", "<i class='fas fa-male icon'></i>"],
              ["Sports", "<i class='fas fa-football-ball icon'></i>"],
              ["Style and Fashion", "<i class='fas fa-tshirt icon'></i>"],
