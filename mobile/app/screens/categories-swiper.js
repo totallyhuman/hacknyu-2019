@@ -16,7 +16,8 @@ export default class CategoriesSwiper extends React.Component {
         },
         headerTitleStyle: {
             color: "white"
-        }
+        },
+        headerTintColor : "White"
     };
 
     render() {
