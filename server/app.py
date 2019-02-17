@@ -81,10 +81,13 @@ def upload_image():
         newpath = "/var/www/html/images/" + time_submitted + ".jpg"
         file.save(newpath)
 
-        newpath = do_things(newpath)
-        texts = analyze_image(newpath)
-        text = detect_text(texts)
+        try:
+            newpath = do_things(newpath)
+            texts = analyze_image(newpath)
+            text = detect_text(texts)
 
+        except Exception:
+            pass
 
         if text == None:
             text = "Food Food food foods and more food"
