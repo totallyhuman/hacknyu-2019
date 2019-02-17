@@ -56,14 +56,11 @@ def upload_image():
         file.save(newpath)
 
         newpath = do_things(newpath)
-        print(newpath)
+        texts = analyze_image(newpath)
 
-        text = detect_text(analyze_image(newpath))
-        print(text)
+        database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
 
-        database.addTransaction(classify(text), calculate_total(text), newpath, "user@provider.com")
-
-    return "Uploaded"
+    return 200
 
     # return send_files(newpath, attachment_filename="tweaked.jpg")
 
