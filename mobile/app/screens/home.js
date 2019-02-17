@@ -25,7 +25,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <View style={home.container}>
-                            <Text style={home.totalMoney}>$100</Text>
+              <Text style={home.totalMoney}>$100</Text>
               <Text style={home.totalTitle}>Spent</Text>
               <View style={{height: 100}}/>
               <Button backgroundColor={colors.grey} text="Categories" onPress={() => this.props.navigation.navigate("Categories")}/>

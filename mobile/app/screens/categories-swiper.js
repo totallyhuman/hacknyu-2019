@@ -22,8 +22,8 @@ export default class CategoriesSwiper extends React.Component {
     render() {
         return (
             <Swiper>
-              {global.categories.map(function(result){
-                  return <MoneyCategory data={result}/>
+              {global.catData.map(function(result){
+                  return <MoneyCategory data={result} />
               })}
             </Swiper>
         );

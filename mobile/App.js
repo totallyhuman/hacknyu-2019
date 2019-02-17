@@ -40,52 +40,38 @@ global.categoriesArray = ["Entertainment",
                           "Technology and Computing",
                           "Travel"];
 
-global.categories = [
-    {
-        categoryname: "Entertainment",
-        spent: 310,
-        total: 1000,
-        purchases: [
-            {
-                company: "The Ginder Store",
-                price: 2,
-                product: "Pirated Movie Collection"
-            },
-            {
-                company: "Varun's Game Company",
-                price: 300,
-                product: "Nintendo Switch"
-            },
-            {
-                company: "Netflix",
-                price: 8,
-                product: "Subscription"
-            },
-        ]
-    },
-    {
-        categoryname: "Food",
-        spent: 310,
-        total: 1000,
-        purchases: [
-            {
-                company: "The Rahul Store",
-                price: 2,
-                product: "Awake Chocolate"
-            },
-            {
-                company: "Varun's Food Company",
-                price: 300,
-                product: "Truckload of Beans"
-            },
-            {
-                company: "Lays Chips",
-                price: 8,
-                product: "Bag of Air"
-            },
-        ]
+global.url = "http://0.0.0.0:5000";
+
+global.catData = {
+    spent: 0,
+    categories: {
+
     }
-];
+};
+
+fetch(global.url + "/api/transactions", {
+    method: "GET"
+}).then(function(response) {
+    return JSON.parse(response['_bodyInit']);
+}).then(function(json) {
+    for (var key in json) {
+        var transaction = json[key];
+
+        var category = global.categoriesArray[transaction.category];
+        var dataCategories = global.catData.categories;
+        
+        if (!(category === "")) {
+            if (!(category in dataCategories)) {
+                dataCategories[category] = {spent: 0, transactions: []};
+            }
+            dataCategories[category].transactions += transaction;
+            dataCategories[category].spent += transaction.price;
+            global.catData.spent += transaction.price;
+        }
+    }
+
+    console.log(global.catData);
+});
 
 const stack = createStackNavigator({
     Home: {

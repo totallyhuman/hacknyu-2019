@@ -36,6 +36,7 @@ export default class Camera extends React.Component {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
             uploadImage(data.uri);
+            console.log(data.uri);
             this.setState({cameraVisible: false});
         }
     }
