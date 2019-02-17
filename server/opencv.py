@@ -72,12 +72,8 @@ def do_things(filePath):
     edged = cv2.Canny(gray, 125, 150)
 
     if __name__ == "__main__":
-<<<<<<< HEAD
         cv2.imshow("ed", edged)
         cv2.imwrite("edged.jpg",edged)
-=======
-        cv2.imshow("edged", edged)
->>>>>>> 54316408a0de4f1e1946ce6e6602aeb188cb7872
         cv2.waitKey(0)
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST,
