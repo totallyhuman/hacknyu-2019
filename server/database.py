@@ -13,7 +13,7 @@ transactions = db.transactions
 
 def addTransaction(category, price, filename, email):
     post = {
-        "category": int(category),
+        "category": str(category),
         "price": float(price),
         "filename": str(filename),
         "email": str(email)
@@ -93,4 +93,5 @@ def clearDatabase():
     transactions.delete_many({})
 
 if __name__ == "__main__":
+    clearDatabase()
     print(fillTestData(100))
