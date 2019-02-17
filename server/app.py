@@ -46,7 +46,7 @@ def index():
 
 @app.route("/api/totalspend")
 def get_total_spend():
-    return "{:.2f}".format(database.getTotalSpent("user@provider.com"))
+    return database.getTotalSpent("user@provider.com")
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
