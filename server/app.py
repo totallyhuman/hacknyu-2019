@@ -50,6 +50,8 @@ def get_total_spend():
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
+    print("Receiving new image")
+
     categories = ["art and entertainment",
                 "automotive and vehicles",
                 "business and industrial",
@@ -82,7 +84,11 @@ def upload_image():
         newpath = do_things(newpath)
         texts = analyze_image(newpath)
 
-        database.addTransaction(classify(detect_text(texts)), calculate_total(texts), newpath, "user@provider.com")
+        classified = categories.index(classify(text)['categories'][0]['label'].split('/')[1])
+
+        total = calculate_total(texts)
+
+        database.addTransaction(classified, total, newpath, "user@provider.com")
 
         return "https://i.budgetbucket.com/images/trimmed_" + time_submitted + ".jpg"
 
