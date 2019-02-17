@@ -46,7 +46,7 @@ export default class Home extends React.Component {
             }
         };
 
-        request.open("GET", "http://0.0.0.0:5000/api/totalspend");
+        request.open("GET", "https://budgetbucket.net/api/totalspend");
         request.send();
 
     }

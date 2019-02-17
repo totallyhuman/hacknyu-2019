@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-db = MongoClient("0.0.0.0", 27017)['hacknyu']
+db = MongoClient("localhost", 27017)['hacknyu']
 users = db.users
 transactions = db.transactions
 

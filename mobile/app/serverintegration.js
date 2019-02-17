@@ -1,4 +1,4 @@
-var serverURL = "http://0.0.0.0:5000";
+var serverURL = "https://budgetbucket.net";
 
 import Toast from 'react-native-simple-toast';
 
@@ -8,7 +8,7 @@ export var uploadImage = async (uri, navigation) => {
 
     const file = {
         uri: uri,
-        name: "image123.jpg",
+        name: "image.jpg",
         type: "image/jpg"
     };
 
@@ -19,7 +19,5 @@ export var uploadImage = async (uri, navigation) => {
     return fetch(serverURL + "/api/uploadimage", {
         method: "POST",
         body
-    })
-        .then((response) => response.json())
-        .then((json) => navigation.navigate("Home"));
+    }).catch(error => console.error(error));
 }

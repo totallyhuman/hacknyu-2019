@@ -40,7 +40,7 @@ global.categoriesArray = ["Entertainment",
                           "Technology",
                           "Travel"];
 
-global.url = "http://0.0.0.0:5000";
+global.url = "https://budgetbucket.net";
 
 global.catData = {
     spent: 0,
@@ -71,7 +71,7 @@ fetch(global.url + "/api/transactions", {
     }
 
     console.log(global.catData);
-});
+}).catch(error => console.error(error));;
 
 const stack = createStackNavigator({
     Home: {
