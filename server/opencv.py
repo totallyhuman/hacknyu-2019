@@ -77,6 +77,7 @@ def do_things(filePath):
 
     if __name__ == "__main__":
         cv2.imshow("ed", edged)
+        cv2.imwrite("edged.jpg",edged)
         cv2.waitKey(0)
 
     cnts = cv2.findContours(edged.copy(), cv2.RETR_LIST,
@@ -116,6 +117,7 @@ def do_things(filePath):
         outlined = image.copy()
         cv2.drawContours(outlined, [screenCnt], -1, (0, 255, 0), 2)
         cv2.imshow("out",outlined)
+        cv2.imwrite("outlined.jpg",outlined)
         cv2.waitKey(0)
 
 
