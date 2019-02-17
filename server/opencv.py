@@ -117,7 +117,7 @@ def do_things(filePath):
 
     filePathArray = filePath.split("/")
     fileName = filePathArray[len(filePathArray) - 1]
-    filePath = "/var/www/images/" + "trimmed_" + fileName
+    filePath = "/var/www/html/images/" + "trimmed_" + fileName
 
     cv2.imwrite(filePath, warped)
 

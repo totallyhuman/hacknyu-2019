@@ -6,23 +6,27 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-client = MongoClient("mongodb://34.73.115.63:27017/")
-db = client.database
-collection = db.collection
+# mongoURL = "mongodb://34.73.115.63:27017/"
+mongoURL = "mongodb://localhost:27017"
+
+db = MongoClient(mongoURL)['hacknyu']
+users = db.users
+transactions = db.transactions
 
 
-def addTransaction(category, total, file_name):
+def addTransaction(category, price, filename, email):
     post = {
-        "category": str(category),
-        "total": float(total),
-        "file_name": str(file_name)
+        "category": int(category),
+        "price": float(price),
+        "filename": str(filename),
+        "email": str(email)
     }
 
     logging.info(post)
-    collection.insert_one(post)
+    transactions.insert_one(post)
 
-def getTransaction()
-
+def getTransactions(email):
+    return transactions.find({"email": email})
 
 def fillTestData(amount):
     categories = ["art and entertainment",
@@ -51,7 +55,7 @@ def fillTestData(amount):
     for x in range(0, amount):
         current_time = int(time.time())
         addTransaction(random.randint(0, len(categories)), random.randint(
-            0, 100), current_time, str(current_time) + ".jpg") 
+            0, 100), str(current_time) + ".jpg", "user@provider.com") 
 
 
 def clearDatabase():

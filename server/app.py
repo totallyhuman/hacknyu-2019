@@ -1,8 +1,12 @@
 from flask import Flask, request
 
+from bson.json_util import dumps
+
 from opencv import do_things
 
 from ocr import *
+
+from database import *
 
 import random, string, time
 
@@ -21,9 +25,15 @@ def upload_image():
         text = detect_text(analyze_image(newpath))
         print(text)
 
-    return send_files(newpath, attachment_filename="tweaked.jpg") 
+    return "Uploaded"
 
-@app.route("/api/getcategories", methods=['GET'])
+    # return send_files(newpath, attachment_filename="tweaked.jpg")
+
+@app.route('/api/transactions', methods=['GET'])
+def get_transactions():
+    return dumps(getTransactions("user@provider.com"))
+
+@app.route("/api/categories", methods=['GET'])
 def get_categories():
     return ["Entertainment",
             "Automotives",
