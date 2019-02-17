@@ -50,8 +50,7 @@ def get_total_spend():
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
-
-  categories = ["art and entertainment",
+    categories = ["art and entertainment",
                 "automotive and vehicles",
                 "business and industrial",
                 "careers",
