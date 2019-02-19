@@ -33,45 +33,53 @@ global.categoriesArray = ["Entertainment",
                           "Real Estate",
                           "Religion",
                           "",
-                          "",
+                          "Food",
                           "",
                           "Sports",
                           "Fashion",
                           "Technology",
                           "Travel"];
 
-global.url = "https://budgetbucket.net";
 
+// global.serverURL = "https://budgetbucket.net";
+
+global.hasNewData = true;
+global.serverURL = "https://budgetbucket.net";
 global.catData = {
     spent: 0,
     categories: {
 
     }
 };
+global.updateCatData = () => {
+    fetch(global.serverURL + "/api/transactions", {
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+        return JSON.parse(response['_bodyInit']);
+    }).then(function(json) {
+        for (var key in json) {
+            var transaction = json[key];
 
-fetch(global.url + "/api/transactions", {
-    method: "GET"
-}).then(function(response) {
-    return JSON.parse(response['_bodyInit']);
-}).then(function(json) {
-    for (var key in json) {
-        var transaction = json[key];
+            var category = global.categoriesArray[transaction.category];
+            var dataCategories = global.catData.categories;
 
-        var category = global.categoriesArray[transaction.category];
-        var dataCategories = global.catData.categories;
-        
-        if (!(category === "")) {
-            if (!(category in dataCategories)) {
-                dataCategories[category] = {spent: 0, transactions: []};
+            if (!(category === "")) {
+                if (!(category in dataCategories)) {
+                    dataCategories[category] = {spent: 0, transactions: []};
+                }
+                dataCategories[category].transactions.push(transaction);
+                dataCategories[category].spent += transaction.price;
+                global.catData.spent += transaction.price;
             }
-            dataCategories[category].transactions.push(transaction);
-            dataCategories[category].spent += transaction.price;
-            global.catData.spent += transaction.price;
         }
-    }
 
-    console.log(global.catData);
-}).catch(error => console.error(error));
+        console.log(global.catData);
+    }).catch(error => console.error(error));
+};
+
+
+console.disableYellowBox = true;
 
 const stack = createStackNavigator({
     Home: {

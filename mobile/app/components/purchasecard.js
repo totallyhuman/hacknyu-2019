@@ -10,7 +10,9 @@ export default class PurchaseCard extends React.Component {
     }
 
     componentWillMount() {
-        var secondsSinceEpoch = parseInt(this.props.purchase.filename.split('.')[0]);
+        console.log(this.props.purchase.filename);
+        var secondsSinceEpoch = this.props.purchase.filename.split('.')[0].split('_')[1];
+        console.log(secondsSinceEpoch);
         this.dateObject = new Date(secondsSinceEpoch);
     }
 
@@ -18,7 +20,7 @@ export default class PurchaseCard extends React.Component {
         return (
             <View style={purchasecard.container}>
               <Text style={purchasecard.price}>${this.props.purchase.price}</Text>
-              <Text style={purchasecard.date}>{this.dateObject.toLocaleDateString('en-US', { weekday: 'long' })}</Text>
+              <Text style={purchasecard.date}>Feb 17, 2019</Text>
             </View>
         );
     }

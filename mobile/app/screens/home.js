@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     }
 
     static navigationOptions = {
-        title: 'Totals',
+        title: 'BudgetBucket',
         headerStyle: {
             backgroundColor: colors.green
         },
@@ -30,34 +30,31 @@ export default class Home extends React.Component {
         }
     };
 
-    componentDidMount() {
-
-        var request = new XMLHttpRequest();
-
-        request.onreadystatechange = (e) => {
-            if (request.readyState !== 4) {
-                return;
-            }
-
-            if (request.status === 200) {
-                this.setState({spent: request.responseText});
-            } else {
-                console.warn('error');
-            }
-        };
-
-        request.open("GET", "https://budgetbucket.net/api/totalspend");
-        request.send();
-
-    }
-
-    
-
     render() {
+        if (global.hasNewData) {
+            var request = new XMLHttpRequest();
+
+            request.onreadystatechange = (e) => {
+                if (request.readyState !== 4) {
+                    return;
+                }
+
+                if (request.status === 200) {
+                    this.setState({spent: request.responseText});
+                } else {
+                    console.warn('error');
+                }
+            };
+
+            request.open("GET", global.serverURL + "/api/totalspend");
+            request.send();
+            global.updateCatData();
+            global.hasNewData = false;
+        }
+
         return (
             <View style={home.container}>
               <Text style={home.totalMoney}>${this.state.spent}</Text>
-              <Text style={home.totalTitle}>Spent</Text>
               <View style={{height: 100}}/>
               <Button backgroundColor={colors.grey} text="Categories" onPress={() => this.props.navigation.navigate("Categories")}/>
               <View style={{height: 40}}/>

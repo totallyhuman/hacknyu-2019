@@ -8,6 +8,7 @@ import {camera} from '../styles';
 import colors from '../colors';
 
 import CameraButton from '../components/camerabutton';
+import Button from '../components/button';
 
 import firebase from 'firebase';
 
@@ -17,7 +18,8 @@ export default class Camera extends React.Component {
     constructor() {
         super();
         this.state = {
-            cameraVisible: true
+            cameraVisible: true,
+            imageLink: ''
         };
     }
 
@@ -36,7 +38,9 @@ export default class Camera extends React.Component {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
             this.setState({cameraVisible: false});
-            var newTransaction = uploadImage(data.uri, this.props.navigation);
+            console.log("Saved image into " + data.uri);
+            uploadImage(data.uri, this.props.navigation, this);
+            global.hasNewData = true;
         }
     }
 
@@ -55,7 +59,15 @@ export default class Camera extends React.Component {
                 />
             );
         } else {
-            return <Image/>;
+            return <Image source={{uri: this.state.imageLink}} style={{height: undefined, width: undefined, flex: 1}}/>;
+        }
+    }
+
+    renderButtons = () => {
+        if (this.state.cameraVisible) {
+            return (
+                <CameraButton style={{width: "100%"}} onPress={this.takePicture} backgroundColor={colors.green} text="Take Picture!"/>
+            );
         }
     }
 
@@ -63,8 +75,7 @@ export default class Camera extends React.Component {
         return (
             <View style={camera.container}>
               {this.renderCamera()}
-              <CameraButton style={{width: "100%"}} onPress={this.takePicture} backgroundColor={colors.green} text="Take Picture!" />
-              
+              {this.renderButtons()}
             </View>
         );
     }
