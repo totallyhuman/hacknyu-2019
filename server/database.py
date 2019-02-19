@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(filename="hacknyu.log", level=logging.INFO)
 
-db = MongoClient("localhost", 27017)['hacknyu']
+db = MongoClient("127.0.0.1", 27017)['hacknyu']
 users = db.users
 transactions = db.transactions
 
@@ -43,7 +43,7 @@ def getCategoriesSpent(email, category):
         if (post["category"] == category):
             spent += post["price"]
   
-    return spent
+    return str("{:.2f}".format(spent))
 
 
 def sortKey(so):

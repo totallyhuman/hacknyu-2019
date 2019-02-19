@@ -34,7 +34,7 @@ def index():
              ["Real Estate", "<i class='fas fa-warehouse icon'></i>"],
              ["Religion and Spirituality", "<i class='fas fa-church icon'></i>"],
              ["Science", "<i class='fas fa-flask icon'></i>"],
-             ["Food", "<i class='fas fa-shopping-cart icon'></i>"],
+             ["Food", "<i class='fas fa-utensils icon'></i>"],
              ["Society", "<i class='fas fa-male icon'></i>"],
              ["Sports", "<i class='fas fa-football-ball icon'></i>"],
              ["Style and Fashion", "<i class='fas fa-tshirt icon'></i>"],
@@ -46,7 +46,7 @@ def index():
 
 @app.route("/api/totalspend")
 def get_total_spend():
-    return str(database.getTotalSpent("user@provider.com"))
+    return "{:.2f}".format(database.getTotalSpent("user@provider.com"))
 
 @app.route("/api/uploadimage", methods=['POST'])
 def upload_image():
@@ -81,10 +81,13 @@ def upload_image():
         newpath = "/var/www/html/images/" + time_submitted + ".jpg"
         file.save(newpath)
 
-        newpath = do_things(newpath)
-        texts = analyze_image(newpath)
-        text = detect_text(texts)
+        try:
+            newpath = do_things(newpath)
+            texts = analyze_image(newpath)
+            text = detect_text(texts)
 
+        except Exception:
+            pass
 
         if text == None:
             text = "Food Food food foods and more food"
@@ -95,7 +98,7 @@ def upload_image():
 
 
         if(classified == None):
-            classiied = 0
+            classified = 0
 
         
         if(total == None):
@@ -103,7 +106,7 @@ def upload_image():
 
         database.addTransaction(classified, total, newpath, "user@provider.com")
 
-        return "https://i.budgetbucket.com/images/trimmed_" + time_submitted + ".jpg"
+        return "https://i.budgetbucket.net/images/trimmed_" + time_submitted + ".jpg"
 
 @app.route('/api/transactions', methods=['GET'])
 def get_transactions():
